@@ -1,4 +1,4 @@
-FROM docker pull maven:3.9.6 AS build
+FROM docker pull maven:sapmachine AS build
 COPY..
 RUN mvn clean package -DskipTests
 
