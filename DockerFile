@@ -1,6 +1,7 @@
-FROM docker pull maven:sapmachine AS build
-COPY..
-RUN mvn clean package -DskipTests
+FROM maven:3.9.6-eclipse-temurin-22 AS build
+COPY src /explore/src
+COPY pom.xml /explore/pom.xml
+RUN mvn -f /explore/pom.xml clean package
 
 FROM openjdk:22-jdk-slim
 COPY --from=build/target/explore-0.0.1-SNAPSHOT.jar explore.jar
