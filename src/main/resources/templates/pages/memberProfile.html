@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Profile</title>
+
+    <!--stylesheet-->
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/corporate-ui-dashboard.css"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<th:block th:replace="~{/constants/navBar}">navbar</th:block>
+
+<div class="container-fluid">
+
+    <!--green-->
+    <div class="pt-7 pb-6 l-bg-green-dark">
+    </div>
+
+    <!--main content-->
+    <form th:each="member: ${memberList}" method="get">
+
+        <!--Name-->
+        <div class="container">
+            <div class="card card-body py-2 bg-transparent shadow-none">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="avatar avatar-2xl rounded-circle position-relative mt-n7 border border-gray-100 border-4">
+                            <img src="/images/profile.jpg" alt="profile_image" class="w-100">
+                        </div>
+                    </div>
+
+                    <div class="col-auto my-auto">
+                        <div class="h-100">
+                            <h3 class="mb-0 font-weight-bold" th:text="${member.name}"></h3>
+                            <!--                            <p class="mb-0" th:text="${member.role}"></p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content-->
+        <div class="container my-3 py-3">
+
+            <div class="row justify-content-center">
+
+                <!--Personal Information-->
+                <div class="col-12 col-xl-4 mb-4">
+                    <div class="card border shadow-xs h-100">
+                        <div class="card-header mb-2 pb-2 p-3">
+                            <div class="row">
+                                <div class="col-md-8 col-9">
+                                    <h6 class="mb-0 fw-bold text-black text-lg">Officials</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body d-grid gap-2 p-3">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        [[${member.position}]]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        Job : [[${member.job}]]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        Mobile : [[${member.phoneNumber}]]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        Email : [[${member.email}]]</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--General-->
+                <div class="col-12 col-xl-4 mb-4">
+                    <div class="card border shadow-xs h-100">
+                        <div class="card-header mb-2 pb-2 p-3">
+                            <div class="row">
+                                <div class="col-md-8 col-9">
+                                    <h6 class="mb-0 fw-bold text-black text-lg">Generals</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body d-grid gap-2 p-3">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        Ward : [[${member.ward}]]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        Booth : [[${member.booth}]]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        Blood Group : [[${member.bloodGroup}]]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        Date of birth : [[${member.dob}]]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Address-->
+                <div class="col-12 col-xl-4 mb-4">
+                    <div class="card border shadow-xs h-100">
+                        <div class="card-header mb-2 pb-2 p-3">
+                            <div class="row">
+                                <div class="col-md-8 col-9">
+                                    <h6 class="mb-0 fw-bold text-black text-lg">Address</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body d-grid gap-2 p-3">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        [[${member.houseName}]]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        near : [[${member.landmark}]]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <p class="mb-0 border-0 ps-0 font-weight-semibold text-sm">
+                                        [[${member.streetName}]], [[${member.city}]], [[${member.district}]]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+<th:block th:replace="~{/constants/footer}">Footer</th:block>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

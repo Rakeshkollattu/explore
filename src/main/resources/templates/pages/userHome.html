@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Explore Home</title>
+
+    <!--stylesheet-->
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/corporate-ui-dashboard.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<body>
+
+<section>
+
+    <th:block th:replace="~{/constants/navBar}">navbar</th:block>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+                <!--Title -->
+                <div class="row p-3 bg-black text-white d-md-flex">
+                    <p class="row text-sm mb-0"><i class="fa-brands fa-teamspeak"></i> Initiative for an interrelated
+                        society.
+                    </p>
+                </div>
+
+                <!--Welcome user card   -->
+                <div class="row p-1 justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <div class="d-md-flex align-items-center mb-3 p-2 mx-2">
+                            <div class="mb-md-0 mb-3">
+                                <h3 class="font-weight-bold mb-0">Hello, [[${name}]]</h3>
+                            </div>
+
+                            <a class="btn btn-sm btn-white btn-icon shadow d-flex align-items-center ms-md-auto mb-sm-0 mb-2 me-2"
+                               th:href="@{/user/{id}(id=${id})}" role="button" style="width: fit-content;">
+                            <span class="btn-inner--icon">
+                                <span class="p-1 bg-success rounded-circle d-flex ms-auto me-2"></span>
+                            </span>
+                                <span class="btn-inner--text fw-bold">Profile and Reviews</span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--Component cards-->
+                <div class="row p-1">
+
+                    <div class="col-xl-3 col-sm-6 mb-xl-0">
+                        <div class="card l-bg-green-dark border shadow-xs mb-2">
+                            <div class="row card-body text-start w-100">
+                                <div class="col-12 w-100">
+                                    <h4 class="mb-2 font-weight-bold">MEMBERS
+                                        <a th:href="@{/members}" class="stretched-link">
+                                            <i class="fa-solid fa-person" style="color: black !important"></i>
+                                            <i class="fa-solid fa-person" style="color: black !important"></i>
+                                            <i class="fa-solid fa-person" style="color: black !important"></i>
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-sm-6 mb-xl-0">
+                        <div class="card l-bg-cherry border shadow-xs mb-2">
+                            <div class="card-body text-start w-100">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="w-100">
+                                            <h4 class="mb-2 font-weight-bold">Blood Donors
+                                                <a th:href="@{/bloodDonor?page=0&size=10}" class="stretched-link">
+                                                    <i class="fa-solid fa-user-nurse"
+                                                       style="color: black !important"></i>
+                                                    <i class="fa-solid fa-user-nurse"
+                                                       style="color: black !important"></i>
+                                                    <i class="fa-solid fa-user-nurse"
+                                                       style="color: black !important"></i>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card l-bg-orange-dark border shadow-xs mb-2">
+                            <div class="card-body text-start w-100">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="w-100">
+                                            <h4 class="mb-2 font-weight-bold">Workers
+                                                <a th:href="@{/worker?page=0&size=10}" class="stretched-link">
+                                                    <i class="fa-solid fa-people-arrows"
+                                                       style="color: black !important"></i>
+                                                    <i class="fa-solid fa-person-dress"
+                                                       style="color: black !important"></i>
+                                                    <i class="fa-solid fa-person" style="color: black !important"></i>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-sm-6 mb-xl-0">
+                        <div class="card l-bg-blue-dark border shadow-xs mb-2">
+                            <div class="card-body text-start w-100">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="w-100">
+                                            <h4 class="mb-2 font-weight-bold">Vehicles
+                                                <a th:href="@{/vehicles}" class="stretched-link">
+                                                    <i class="fa-solid fa-taxi" style="color: black !important"></i>
+                                                    <i class="fa-solid fa-truck" style="color: black !important"></i>
+                                                    <i class="fa-solid fa-car" style="color: black !important"></i>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--services-->
+                <div class="mt-1 mb-1 justify-content-center" style="margin-left:1px;">
+
+                    <a th:href="@{/feeds}" class="text-white btn btn-sm indigo btn-rounded">
+                        Updates
+                    </a>
+
+                    <a th:href="@{/services}" class="text-white btn btn-sm indigo btn-rounded position-relative">
+                        Resources
+                    </a>
+
+                    <a th:href="@{/documents}" class="text-white btn btn-sm indigo btn-rounded position-relative">
+                        Documents
+                    </a>
+
+                    <a th:href="@{/documents}" class="text-white btn btn-sm indigo btn-rounded position-relative">
+                        Circulars
+                    </a>
+                </div>
+
+                <!--Title-->
+                <div class="row p-3 bg-black text-white d-md-flex">
+                    <p class="row text-sm mb-0"> Let's start exploring our society
+                    </p>
+                </div>
+
+                <!--Image carousel-->
+                <div id="carouselExampleControls" class="mt-3 carousel carousel-dark slide"
+                     data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="2500">
+                            <div class="card-wrapper container-sm d-flex  justify-content-around">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="/images/politician.jpg" class="card-img-top" alt="...">
+                                </div>
+                                <div style="margin-left:10px;"></div>
+                                <div class="card" style="width: 18rem;">
+                                    <img src="/images/doctor.jpg" class="card-img-top" alt="...">
+                                </div>
+                                <div style="margin-left:10px;"></div>
+                                <div class="card" style="width: 18rem;">
+                                    <img src="/images/teacher.jpg" class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2500">
+                            <div class="card-wrapper container-sm d-flex   justify-content-around">
+                                <div class="card  " style="width: 18rem;">
+                                    <img src="/images/homemade.jpg" class="card-img-top" alt="...">
+                                </div>
+                                <div style="margin-left:10px;"></div>
+                                <div class="card" style="width: 18rem;">
+                                    <img src="/images/driver.jpg" class="card-img-top" alt="...">
+                                </div>
+                                <div style="margin-left:10px;"></div>
+                                <div class="card" style="width: 18rem;">
+                                    <img src="/images/painter.jpg" class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2500">
+                            <div class="card-wrapper container-sm d-flex  justify-content-around">
+                                <div class="card " style="width: 18rem;">
+                                    <img src="/images/plumber.jpg" class="card-img-top" alt="...">
+                                </div>
+                                <div style="margin-left:10px;"></div>
+                                <div class="card" style="width: 18rem;">
+                                    <img src="/images/grassCuter.jpg" class="card-img-top" alt="...">
+                                </div>
+                                <div style="margin-left:10px;"></div>
+                                <div class="card" style="width: 18rem;">
+                                    <img src="/images/electrician.jpg" class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Button carousel-->
+                <div id="carouselExampleDark" class=" row carousel carousel-dark slide mt-3" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active" data-bs-interval="5000">
+                            <div class="d-grid">
+                                <button type="button" class="btn red text-black fw-bold opacity-75"
+                                        data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top"
+                                        title=" Open BLOOD DONORS - Choose required blood group - Contact your neighbour &#128512;.">
+                                    Searching for a blood donor !
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-bs-interval="5000">
+                            <div class="d-grid">
+                                <button type="button" class="btn blue text-white fw-bold opacity-75"
+                                        data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top"
+                                        title="Open Workers -  Choose required Driver - Contact your neighbour &#128512;.">
+                                    Searching for a Driver !
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-bs-interval="5000">
+                            <div class="d-grid">
+                                <button type="button" class="btn indigo text-white fw-bold opacity-75"
+                                        data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top"
+                                        title="Open Workers -  Choose required Electrician - Contact your neighbour &#128512;.">
+                                    Searching for an Electrician !
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--carousel-->
+                <div class="card">
+                    <div id="news-slider" class="owl-carousel">
+
+                        <div class="post-slide">
+                            <div class="post-img">
+                                <img src="/images/donor.jpg" alt="">
+                                <a th:href="@{/bloodDonor}" class="over-layer"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="post-content">
+                                <h3 class="post-title">
+                                    <a>Blood Donation</a>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="post-slide">
+                            <div class="post-img">
+                                <img src="/images/medical.jpg" alt="">
+                                <a class="over-layer"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="post-content">
+                                <h3 class="post-title">
+                                    <a>Medical Camps</a>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="post-slide">
+                            <div class="post-img">
+                                <img src="/images/sports.jpg">
+                                <a class="over-layer"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="post-content">
+                                <h3 class="post-title">
+                                    <a>Sports events</a>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="post-slide">
+                            <div class="post-img">
+                                <img src="/images/award.jpg" alt="">
+                                <a class="over-layer"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="post-content">
+                                <h3 class="post-title">
+                                    <a>Award Functions</a>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="post-slide">
+                            <div class="post-img">
+                                <img src="/images/art.jpg" alt="">
+                                <a class="over-layer"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="post-content">
+                                <h3 class="post-title">
+                                    <a>Art and Cultural events</a>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="post-slide">
+                            <div class="post-img">
+                                <img src="https://images.unsplash.com/photo-1564979268369-42032c5ca998?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=500"
+                                     alt="">
+                                <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="post-content">
+                                <h3 class="post-title">
+                                    <a>Market Place</a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <th:block th:replace="~{/constants/footer}">footer</th:block>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'></script>
+<script src="/js/explore.js"></script>
+<script type='text/javascript'></script>
+<script>
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Nav Bar</title>
+</head>
+
+<body>
+<nav class="navbar fixed-top navbar-light bg-light navbar-expand-sm navbar-expand-md navbar-expand-lg shadow-5-strong">
+    <div class="container-fluid">
+
+        <!-- brand -->
+        <div class="navbar-brand">
+            <a th:href="@{/userHome}">
+                <h4 class="text-muted fa-brands">
+                    <small><strong>explore</strong></small>
+                </h4>
+            </a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav3"
+                aria-controls="navbarNav3" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navbarNav3">
+            <ul class="navbar-nav ml-auto mx-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/userHome}">Home</a>
+                </li>
+                <li th:if="${admin}" class="nav-item">
+                    <a class="nav-link" th:href="@{/adminHome}">Admin Home</a>
+                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/members}">Members</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/bloodDonor}">Blood Donors</a>-->
+<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+</body>
+</html>

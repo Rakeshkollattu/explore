@@ -3,6 +3,67 @@ body {
             padding-top: 56px;
             font-family: "Montserrat", sans-serif !important;
 
+        .red {
+            background-color: red;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .gray-dark {
+            background-color: gray-dark;
+        }
+        .indigo {
+            background-color: indigo;
+        }
+        .purple {
+                    background-color: purple;
+                }
+        .pink {
+                    background-color: pink;
+                }
+        .orange {
+                    background-color: orange;
+                }
+        .yellow {
+                    background-color: yellow;
+                }
+        .green {
+                     background-color: green;
+                 }
+        .light-green{
+                    background-color: lightgreen;
+                    }
+        }
+        .teal {
+                    background-color: teal;
+                }
+        .cyan {
+                    background-color: cyan;
+                }
+        .gray {
+                    background-color: gray;
+                }
+
+        .l-bg-cherry {
+            background: linear-gradient(to right, #493240, #f09) !important;
+            color: #fff;
+        }
+
+        .l-bg-blue-dark {
+            background: linear-gradient(to right, #373b44, #4286f4) !important;
+            color: #fff;
+        }
+
+        .l-bg-green-dark {
+            background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+            color: #fff;
+        }
+
+        .l-bg-orange-dark {
+            background: linear-gradient(to right, #a86008, #ffba56) !important;
+            color: #fff;
+        }
+
         .homePage-header {
             background-color: #B2AFAB;
             background-position: center center;
@@ -19,6 +80,15 @@ body {
             width:auto
         }
 
+        .popover .popover-header {
+            font-family: "Montserrat", sans-serif !important;
+            background-color: lightgreen;
+        }
+
+        .btn:hover {
+            background-color: forestgreen !important;
+        }
+
         .post-slide {
             background: #fff;
             margin: 20px 15px 20px;
@@ -32,14 +102,13 @@ body {
             overflow: hidden;
             border-radius: 10px;
             margin: -12px 15px 8px 15px;
-            margin-left: -10px;
         }
 
         .post-slide .post-img img {
             width: 100%;
             height: auto;
             transform: scale(1, 1);
-            transition: transform 0.2s linear;
+            transition: transform 0.1s linear;
         }
 
         .post-slide:hover .post-img img {
@@ -83,7 +152,7 @@ body {
             color: #333;
             display: inline-block;
             text-transform: uppercase;
-            transition: all 0.3s ease 0s;
+            transition: all 0.1s ease 0s;
         }
 
         .post-slide .post-title a:hover {

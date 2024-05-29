@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/paper-kit.css?v=2.2.0" rel="stylesheet"/>
+    <style>
+        .card {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+}
+
+.l-bg-blue-dark {
+    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+}
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+    font-size: 110px;
+}
+
+.card .card-statistic-3 .card-icon {
+    text-align: center;
+    line-height: 50px;
+    margin-left: 15px;
+    color: #000;
+    position: absolute;
+    right: 65px;
+    opacity: 0.2;
+}
+
+    </style>
+</head>
+<body>
+
+<!--nav bar-->
+<nav class="row navbar fixed-top navbar-light bg-light navbar-expand-sm navbar-expand-md navbar-expand-lg container-fluid">
+    <div class="navbar-brand">
+        <h4 class="text-muted fa-brands">
+            <small><strong>explore</strong></small>
+        </h4>
+    </div>
+</nav>
+
+<section>
+
+    <div th:if="${message != null}" class="row bg-success">
+        <div class="fw-bold text-black" style="margin-top: 8rem;margin-left: 2rem;margin-bottom: 1rem;">
+            [[${message}]]
+        </div>
+    </div>
+
+    <div th:if="${param.error}" class="row bg-danger">
+        <div class="fw-bold text-black" style="margin-top: 8rem;margin-left: 2rem;margin-bottom: 1rem;">
+            Invalid username or password. Please try again.
+        </div>
+    </div>
+
+    <div th:if="${param.message}" class="row bg-success">
+        <div class="fw-bold text-black" style="margin-top: 8rem;margin-left: 2rem;margin-bottom: 1rem;">
+            Invalid username or password. Please try again.
+        </div>
+    </div>
+
+
+    <!--Login button-->
+    <div class="fixed-top" style="margin-top: 9rem;margin-left: 1rem;">
+        <button id="login" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"
+                class="btn l-bg-blue-dark position-relative">
+            Login
+        </button>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal col-9 fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header p-2 l-bg-blue-dark">
+                    <h5 class="modal-title fw-bold" id="exampleModalToggleLabel">Let's start exploring</h5>
+                </div>
+                <div class="modal-body">
+                    <!--Login form-->
+                    <div class="xp-2 justify-content-center align-items-center container-fluid h-custom">
+
+                        <form th:action="@{/login}" method="post">
+
+                            <div class="form-floating mb-3">
+                                <input type="email" name="username" id="username" placeholder="name@example.com"
+                                       class="form-control" required/>
+                                <label for="username">Email address</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="password" name="password" placeholder="Password" id="password"
+                                       class="form-control" required/>
+                                <label for="password">Password</label>
+                            </div>
+
+                            <button type="button" class="btn btn-light" data-bs-target="#resetPassword"
+                                    data-bs-toggle="modal"
+                                    style="background-color: white;color: black;border: white;">Reset Password
+                            </button>
+
+                            <div th:if="${param.error}" style="color: red;">
+                                Invalid username and password.
+                            </div>
+
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" value="Sign in" class="btn btn-primary"/>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Reset password modal-->
+    <div class="modal col-9 fade" id="resetPassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header p-2 l-bg-blue-dark">
+                    <h5 class="modal-title fw-bold" id="exampleModalToggleLabel2">Reset your password</h5>
+                </div>
+                <div class="modal-body">
+                    <!--Reset form-->
+                    <div class="xp-2 justify-content-center align-items-center container-fluid h-custom">
+
+                        <form th:action="@{/resetPassword}" method="post" th:object="${motopass}">
+
+                            <div class="form-floating mb-3">
+                                <input th:field="*{email}" type="email" name="username" id="username1"
+                                       placeholder="name@example.com"
+                                       class="form-control" required/>
+                                <label for="username1">Email address</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input th:field="*{motopass1}" type="password" name="password"
+                                       placeholder="New Password" id="password1"
+                                       class="form-control" required/>
+                                <label for="password1">New Password</label>
+                            </div>
+
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" value="Submit" class="btn btn-primary"/>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Title card-->
+    <div class="row d-md-flex card p-2 " style="margin-top: 8rem;">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card l-bg-blue-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                    <div class="row align-items-center d-flex">
+                        <div class="col-9">
+                            <h4 class="d-flex align-items-center mb-0">
+                                <strong>Explore our neighbours - People who works for the well-being of our
+                                    society.</strong>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Content-->
+        <div class="card mb-3" style="background-color: transparent;margin-top: -2rem;">
+            <div class="card-body">
+                <h6 class="card-text">
+                    <small>
+                        Community workers are citizens who work in our community to ensure the well-being of the
+                        community. They perform their duties to ensure that people in society stay happy, safe, and
+                        healthy.
+                        Community helpers perform their duties to the best to ensure that we live in a safe environment
+                        and
+                        have the necessary services. </small></h6>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Registration-->
+    <div class="row d-md-flex p-2 justify-content-center">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card l-bg-blue-dark">
+                <div class="card-statistic-3 p-2">
+                    <div class="row align-items-center d-flex">
+                        <a class="btn text-dark btn-info" th:href="@{/registration}">Register with us to join our
+                            society</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Content-->
+    <div class="card">
+        <img src="/images/caursel2.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h6 class="card-text"><small>Community workers are people we rely on emergencies. They are trained professionals
+                who know the right solutions various disastrous problems. We head to them to get expert help and
+                to get rid of problematic situations before they get severe.</small></h6>
+            <h6 class="card-text"><small>Students need to learn community workers so that they know whom to rely on in a crisis.</small></h6>
+            <h6 class="card-text"><small>Children may often avoid strangers even during an emergency because they are taught to do
+                so at home and school. Teaching about community workers will help them recognize people that they can trust
+                during a certain situation.</small></h6>
+        </div>
+    </div>
+
+    <!--Image carousel-->
+    <div id="carouselExampleControls" class="mt-3 carousel carousel-dark slide"
+         data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="2500">
+                <div class="card-wrapper container-sm d-flex  justify-content-around">
+
+                    <div class="card" style="width: 18rem;">
+                        <img src="/images/politician.jpg" class="card-img-top" alt="...">
+                        <div class="card-text text-black" style="margin-left:10px;">
+                            <br>
+                            <h6> POLITICIAN</h6>
+                        </div>
+                    </div>
+
+                    <div style="margin-left:10px;"></div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="/images/doctor.jpg" class="card-img-top" alt="...">
+                        <div class="card-text mt-1 text-black" style="margin-left:10px;">
+                            <h6> doctor</h6>
+                        </div>
+                    </div>
+
+                    <div style="margin-left:10px;"></div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="/images/teacher.jpg" class="card-img-top" alt="...">
+                        <div class="card-text mt-1 text-black" style="margin-left:10px;">
+                            <h6> teacher</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2500">
+                <div class="card-wrapper container-sm d-flex   justify-content-around">
+
+                    <div class="card  " style="width: 18rem;">
+                        <img src="/images/homemade.jpg" class="card-img-top" alt="...">
+                        <div class="card-text mt-1 text-black" style="margin-left:10px;">
+                            <h6> homemaid</h6>
+                        </div>
+                    </div>
+
+                    <div style="margin-left:10px;"></div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="/images/driver.jpg" class="card-img-top" alt="...">
+                        <div class="card-text mt-1 text-black" style="margin-left:10px;">
+                            <h6> driver</h6>
+                        </div>
+                    </div>
+
+                    <div style="margin-left:10px;"></div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="/images/painter.jpg" class="card-img-top" alt="...">
+                        <div class="card-text mt-1 text-black" style="margin-left:10px;">
+                            <h6> painter</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2500">
+                <div class="card-wrapper container-sm d-flex  justify-content-around">
+
+                    <div class="card " style="width: 18rem;">
+                        <img src="/images/plumber.jpg" class="card-img-top" alt="...">
+                        <div class="card-text mt-1 text-black" style="margin-left:10px;">
+                            <h6> plumber</h6>
+                        </div>
+                    </div>
+
+                    <div style="margin-left:10px;"></div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="/images/grassCuter.jpg" class="card-img-top" alt="...">
+                        <div class="card-text mt-1 text-black" style="margin-left:10px;">
+                            <h6> grass cutter</h6>
+                        </div>
+                    </div>
+
+                    <div style="margin-left:10px;"></div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="/images/electrician.jpg" class="card-img-top" alt="...">
+                        <div class="card-text mt-1 text-black" style="margin-left:10px;">
+                            <h6> electrician</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--    &lt;!&ndash;Content cards&ndash;&gt;-->
+<!--    <div class="container-sm row row-cols-1 row-cols-md-3 g-4">-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/doctor.jpg" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title"><strong>Doctors</strong></h5>-->
+<!--                    <p class="card-text">* Doctors are experienced medical professionals who are trained and licensed to-->
+<!--                        treat patients.</p>-->
+<!--                    <p class="card-text">* They are community helpers who perform checkups and provide medicines to-->
+<!--                        treat diseases.</p>-->
+<!--                    <p class="card-text">* They work in private clinics and hospitals.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/nurse.jpg" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title"><strong>Nurses</strong></h5>-->
+<!--                    <p class="card-text">* A nurse is there to help doctors.</p>-->
+<!--                    <p class="card-text">* They look after the patients, interact with doctors, provide medicine, and-->
+<!--                        check critical symptoms in patients..</p>-->
+<!--                    <p class="card-text">* They work in private clinics and hospitals.</p>-->
+<!--                    <p class="card-text">* They play an important role in the healthcare workforceDoctors are-->
+<!--                        experienced medical professionals who are trained and licensed to treat patients.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="images/teacher.jpg" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title"><strong>Teachers</strong></h5>-->
+<!--                    <p class="card-text">* The role of a teacher as a community helper is to provide education to-->
+<!--                        students.</p>-->
+<!--                    <p class="card-text">* They teach different subjects in schools, colleges, and institutions.</p>-->
+<!--                    <p class="card-text">* Teachers are also known as nation builders.</p>-->
+<!--                    <p class="card-text">* They also play an important role in the development and growth of the-->
+<!--                        students apart from their studies.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/fireFighter.jpg" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title"><strong>Fire Fighters</strong></h5>-->
+<!--                    <p class="card-text">* Firefighters are community helpers who stop fires and rescue people from-->
+<!--                        fire-affected facilities.</p>-->
+<!--                    <p class="card-text">* They work at fire stations.</p>-->
+<!--                    <p class="card-text">* They reach the affected zone via fire trucks.</p>-->
+<!--                    <p class="card-text">* They use fire trucks to carry necessary equipment like ladders, water tanks,-->
+<!--                        ropes, and first aid.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/police.jpg" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title"><strong>Police</strong></h5>-->
+<!--                    <p class="card-text">* Police officers are responsible for protecting people from crime and-->
+<!--                        threats.</p>-->
+<!--                    <p class="card-text">* They are responsible for maintaining law and order in a particular area.</p>-->
+<!--                    <p class="card-text">* They catch offenders and ensure the safety of people.</p>-->
+<!--                    <p class="card-text">* A policeman also shows up in the time of emergencies and provides appropriate-->
+<!--                        support.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/fisherman.jpg" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title"><strong>Fisherman</strong></h5>-->
+<!--                    <p class="card-text">* The role of a fisherman is to catch fish.</p>-->
+<!--                    <p class="card-text">* They sell the fish in the fish market or to the fish seller to earn their-->
+<!--                        living.</p>-->
+<!--                    <p class="card-text">* They use fishing nets, boats, and other tools to catch fish from lakes,-->
+<!--                        rivers, seas, and oceans.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/soldier.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/astronaut.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/farmer.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/courierboys.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/grassCuter.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/driver.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/painter.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/politician.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/plumber.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/electrician.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card">-->
+<!--                <img src="/images/donor.jpg" class="card-img-top" alt="...">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+</section>
+
+<!--Footer-->
+<Footer class="row justify-content-md-center text-center bg-black text-white p-5" style="margin-top: 80px">
+    <div class="text-center col-md-12 col-lg-8">
+        <h3>Thank you for supporting us!</h3>
+    </div>
+    <div class="text-center col-md-12 col-lg-8">
+        <div class="credits ml-auto">
+            <span class="copyright">
+              ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>, made with <i class="fa fa-heart heart"></i> by dev
+            </span>
+        </div>
+    </div>
+</Footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+<script src="/js/explore.js"></script>
+<script type='text/javascript'></script>
+</body>
+</html>

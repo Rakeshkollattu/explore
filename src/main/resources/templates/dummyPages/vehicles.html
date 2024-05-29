@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Booking - Coming Soon</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f8f9fa;
+        }
+        .container {
+          text-align: center;
+          background: white;
+          padding: 30px;
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        #countdown {
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+        }
+        .countdown-item {
+          margin: 0 10px;
+          font-size: 24px;
+          text-align: center;
+        }
+        .countdown-item span {
+          display: block;
+          font-size: 48px;
+          font-weight: bold;
+        }
+    </style>
+</head>
+<body class="row">
+
+<div clas="col-9">
+    <div class="col-6 container container-sm card">
+        <img src="/images/vehicles.jpg" width="150" height="150" alt="Logo" class="mb-4">
+        <h1 class="mb-3">Vehicle Booking Coming Soon</h1>
+        <p>We're working hard to get our site ready. Stay tuned for something amazing!</p>
+        <div id="countdown">
+            <div class="countdown-item">
+                <span id="days">0</span> Days
+            </div>
+            <div class="countdown-item">
+                <span id="hours">0</span> Hours
+            </div>
+            <div class="countdown-item">
+                <span id="minutes">0</span> Minutes
+            </div>
+            <div class="countdown-item">
+                <span id="seconds">0</span> Seconds
+            </div>
+        </div>
+        <form class="mt-4">
+            <div class="input-group">
+                <input type="email" class="form-control" placeholder="Enter your email" required>
+                <button class="btn btn-primary" type="submit">Notify Me</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const countdown = () => {
+      const countDate = new Date('July 1, 2024 00:00:00').getTime();
+      const now = new Date().getTime();
+      const gap = countDate - now;
+
+      const second = 1000;
+      const minute = second * 60;
+      const hour = minute * 60;
+      const day = hour * 24;
+
+      const textDay = Math.floor(gap / day);
+      const textHour = Math.floor((gap % day) / hour);
+      const textMinute = Math.floor((gap % hour) / minute);
+      const textSecond = Math.floor((gap % minute) / second);
+
+      document.getElementById('days').innerText = textDay;
+      document.getElementById('hours').innerText = textHour;
+      document.getElementById('minutes').innerText = textMinute;
+      document.getElementById('seconds').innerText = textSecond;
+    };
+
+    setInterval(countdown, 1000);
+</script>
+</body>
+</html>

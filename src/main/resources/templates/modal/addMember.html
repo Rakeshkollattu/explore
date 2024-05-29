@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Add Member</title>
+</head>
+
+<body>
+<!-- Modal -->
+<div th:fragment="modal(id)" class="modal fade" th:id="${id}" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header p-2 l-bg-green-dark">
+                <h5 class="modal-title" id="exampleModalToggleLabel"> Complete the form</h5>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-body">
+
+                    <!--form-->
+                    <div class="xp-2 justify-content-center align-items-center container-fluid h-custom">
+
+                        <form th:action="@{/addMember}" method="post" role="form" th:object="${user}">
+
+                            <label for="username" class="form-label text-muted">Full name</label>
+                            <input th:field="*{name}" type="text" class="form-control form-control-sm" id="username"
+                                   required>
+
+                            <label for="email" class="form-label text-muted">Email address</label>
+                            <input th:field="*{email}" type="email" class="form-control form-control-sm" id="email"
+                                   required>
+
+                            <label for="number" class="form-label text-muted">Mobile number</label>
+                            <input th:field="*{phoneNumber}" type="text" class="form-control form-control-sm"
+                                   id="number" required>
+
+                            <label for="password" class="form-label text-muted">Password</label>
+                            <input th:field="*{password}" type="password" class="form-control form-control-sm"
+                                   id="password" required>
+
+                            <!--                                    <div class="input-group">-->
+                            <!--                                        <input th:field="*{password}" type="password" class="form-control" id="password" required>-->
+                            <!--                                        <button type="button" class="btn btn-outline-secondary toggle-password">-->
+                            <!--                                            <i class="fa-solid fa-eye text-black"></i>-->
+                            <!--                                        </button>-->
+                            <!--                                    </div>-->
+                            <!--                                    <label for="password">Password</label>-->
+
+                            <label for="job" class="form-label text-muted">Job title</label>
+                            <input th:field="*{job}" type="text" class="form-control form-control-sm" id="job" required>
+
+                            <label for="role" class="form-label text-muted">Roles and description</label>
+                            <textarea th:field="*{role}" rows="3" class="form-control form-control-sm" id="role"
+                                      placeholder="President-Youth Welfare Association"></textarea>
+
+                            <label for="bloodGroup" class="form-label text-muted">blood group</label>
+                            <select th:field="*{bloodGroup}" class="form-select form-select-sm"
+                                    aria-label="Small select example" id="bloodGroup" required>
+                                <option value="O-">O-</option>
+                                <option value="O+">O+</option>
+                                <option value="A-">A-</option>
+                                <option value="A+">A+</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB-">AB-</option>
+                                <option value="AB+">AB+</option>
+                            </select>
+
+                            <label for="dob" class="form-label text-muted">Date of Birth</label>
+                            <input th:field="*{dob}" type="text" class="form-control form-control-sm" id="dob"
+                                   placeholder="Month/Date/Year" required>
+
+                            <label for="ward" class="form-label text-muted">ward</label>
+                            <select th:field="*{ward}" class="form-select form-select-sm"
+                                    aria-label="Small select example"
+                                    id="ward" required>
+                                <option value="ward 1">ward 1</option>
+                                <option value="ward 2">ward 2</option>
+                                <option value="ward 3">ward 3</option>
+                                <option value="ward 4">ward 4</option>
+                                <option value="ward 5">ward 5</option>
+                                <option value="ward 6">ward 6</option>
+                                <option value="ward 7">ward 7</option>
+                                <option value="ward 8">ward 8</option>
+                                <option value="ward 9">ward 9</option>
+                                <option value="ward 10">ward 10</option>
+                                <option value="ward 11">ward 11</option>
+                                <option value="ward 12">ward 12</option>
+                                <option value="ward 13">ward 13</option>
+                                <option value="ward 14">ward 14</option>
+                                <option value="ward 15">ward 15</option>
+                                <option value="ward 16">ward 16</option>
+                                <option value="ward 17">ward 17</option>
+                                <option value="ward 18">ward 18</option>
+                                <option value="ward 19">ward 19</option>
+                                <option value="ward 20">ward 20</option>
+                                <option value="ward 21">ward 21</option>
+                                <option value="ward 22">ward 22</option>
+                                <option value="ward 23">ward 23</option>
+                                <option value="ward 24">ward 24</option>
+                                <option value="ward 25">ward 25</option>
+                                <option value="ward 26">ward 26</option>
+                                <option value="ward 27">ward 27</option>
+                                <option value="ward 28">ward 28</option>
+                                <option value="ward 29">ward 29</option>
+                            </select>
+
+                            <label for="booth" class="form-label text-muted">booth</label>
+                            <input th:field="*{booth}" type="number" class="form-control form-control-sm" id="booth"
+                                   placeholder="booth number" required>
+
+                            <label for="house" class="form-label text-muted">house name</label>
+                            <input th:field="*{houseName}" type="text" class="form-control form-control-sm" id="house"
+                                   required>
+
+                            <label for="landmark" class="form-label text-muted">landmark</label>
+                            <input th:field="*{landmark}" type="text" class="form-control form-control-sm" id="landmark"
+                                   placeholder="landmark near your home" required>
+
+                            <label for="streetName" class="form-label text-muted">street name-location</label>
+                            <input th:field="*{streetName}" type="text" class="form-control form-control-sm"
+                                   id="streetName"
+                                   placeholder="street name and location" required>
+
+                            <label for="city" class="form-label text-muted">city</label>
+                            <select th:field="*{city}" class="form-select form-select-sm" id="city" required>
+                                <option value="North Paravur">North Paravur</option>
+                            </select>
+
+                            <label for="district" class="form-label text-muted">district</label>
+                            <select th:field="*{district}" class="form-select form-select-sm" id="district" required>
+                                <option value="Ernakulam">Ernakulam</option>
+                            </select>
+
+                            <div class="message mt-3" th:if="${message != null}"> [[${message}]]</div>
+
+                            <div class="mt-3 mb-3">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

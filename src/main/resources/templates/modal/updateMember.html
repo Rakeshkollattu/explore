@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Update Contact</title>
+</head>
+
+<body>
+<!-- Modal -->
+<div th:fragment="modal(id,value)" class="modal fade" th:id="${id}" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Contact</h5>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/explore/updateContact}" method="post" th:object="${contactDto}">
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">Full name</label>
+                        <input th:field="*{name}" th:text="${value.phoneNumber}" type="text"
+                               class="form-control form-control-sm" id="nameInput"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailInput" class="form-label">Email ID</label>
+                        <input th:field="*{email}" th:text="${value.email}" type="email"
+                               class="form-control form-control-sm" id="emailInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneNumberInput" class="form-label">Phone Number</label>
+                        <input th:field="*{phoneNumber}" th:text="${value.phoneNumber}" type="number"
+                               class="form-control form-control-sm" id="phoneNumberInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bloodGroupInput" class="form-label">Blood Group</label>
+                        <input th:field="*{bloodGroup}" th:text="${value.bloodGroup}" type="text"
+                               class="form-control form-control-sm" id="bloodGroupInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="addressInput" class="form-label">Address</label>
+                        <input th:field="*{houseName}" th:text="${value.houseName}" type="text"
+                               class="form-control form-control-sm" id="addressInput">
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update Member</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
